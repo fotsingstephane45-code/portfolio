@@ -2,7 +2,7 @@
    1. RÉGLAGES À MODIFIER
    ===================================================== */
 // TON numéro WhatsApp : indicatif (237) + numéro, sans espace ni "+"
-var PHONE = "237600000000"; // à remplacer par ton vrai numéro
+var PHONE = "237652508451"; // à remplacer par ton vrai numéro
 
 // Technologies affichées en pastilles
 var technos = ["HTML", "CSS", "JavaScript", "React", "Next.js", "NestJS", "Tailwind CSS"];

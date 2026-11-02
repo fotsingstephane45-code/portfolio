@@ -2,7 +2,7 @@
    1. RÉGLAGES À MODIFIER POUR CHAQUE CLIENT
    ===================================================== */
 // Numéro WhatsApp du secrétariat : indicatif (237) + numéro, sans espace ni "+"
-var PHONE = "237600000000"; // à remplacer par le vrai numéro
+var PHONE = "237652508451"; // à remplacer par le vrai numéro
 
 // Formations. n = nom, d = durée, p = prix par mois (FCFA), c = couleur du trait de la carte
 var formations = [

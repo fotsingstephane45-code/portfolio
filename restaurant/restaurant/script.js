@@ -3,7 +3,7 @@
    ===================================================== */
 
 // Numéro WhatsApp du restaurant : indicatif du pays (237) + numéro, sans espace ni "+"
-var PHONE = "237600000000"; // à remplacer par le vrai numéro du client
+var PHONE = "237652508451"; // à remplacer par le vrai numéro du client
 
 // Liste des plats. Pour ajouter un plat, copie une ligne et change les valeurs.
 //   n = nom, d = description, p = prix en FCFA, c = catégorie,
