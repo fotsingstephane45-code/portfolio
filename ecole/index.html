@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <!-- Adapte la page aux téléphones -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Académie Horizon – Centre de formation à Yaoundé</title>
+  <!-- Police : Outfit (ronde, moderne et très lisible) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- ========== EN-TÊTE ========== -->
+  <header class="hero">
+    <div class="wrap">
+      <nav>
+        <b>Académie Horizon</b>
+        <a class="nav-btn" href="#inscription">S’inscrire</a>
+      </nav>
+
+      <div class="hgrid">
+        <div>
+          <p class="tag">Centre de formation · Yaoundé</p>
+          <h1>Apprends un métier. Trouve ton premier client.</h1>
+          <p class="lead">Des formations pratiques, en petits groupes, avec un certificat à la fin. Informatique, anglais, comptabilité et plus.</p>
+          <a class="btn" href="#inscription">Réserver ma place</a>
+          <a class="btn ghost" href="#formations">Voir les formations</a>
+        </div>
+
+        <!-- Photo d'en-tête (images/entete.jpg). Par défaut : motif de points sur fond bleu -->
+        <div class="visual" role="img" aria-label="Étudiants en cours de formation">
+          <!-- Autocollant : le texte est rempli par script.js (prochaine rentrée) -->
+          <div class="sticker"><small>Prochaine rentrée</small><b id="rentree"></b><span id="countdown"></span></div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- ========== CHIFFRES CLÉS ========== -->
+    <section class="stats">
+      <div class="wrap">
+        <div><b>800+</b><span>diplômés</span></div>
+        <div><b>85 %</b><span>trouvent une activité</span></div>
+        <div><b>6</b><span>formations</span></div>
+      </div>
+    </section>
+
+    <!-- ========== FORMATIONS (cartes créées par script.js) ========== -->
+    <section id="formations">
+      <div class="wrap">
+        <h2>Nos formations</h2>
+        <p class="sub">Prix par mois, matériel inclus. Paiement en plusieurs fois possible.</p>
+        <div id="list" class="cards"></div>
+      </div>
+    </section>
+
+    <!-- ========== POURQUOI NOUS CHOISIR ========== -->
+    <section class="soft">
+      <div class="wrap">
+        <h2>Pourquoi l’Académie Horizon</h2>
+        <div class="why">
+          <div><h3>Surtout de la pratique</h3><p>Chaque cours se termine par un exercice réel, pas seulement de la théorie.</p></div>
+          <div><h3>Petits groupes</h3><p>12 élèves maximum par classe pour que le formateur suive chacun.</p></div>
+          <div><h3>Certificat reconnu</h3><p>Une attestation à présenter aux employeurs et à vos futurs clients.</p></div>
+        </div>
+        <!-- Galerie : 3 photos facultatives (images/vie-1.jpg à vie-3.jpg) -->
+        <div class="gallery">
+          <div class="pic p1" role="img" aria-label="Salle de cours"></div>
+          <div class="pic p2" role="img" aria-label="Atelier pratique"></div>
+          <div class="pic p3" role="img" aria-label="Remise de certificat"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== INSCRIPTION ========== -->
+    <section id="inscription" class="dark">
+      <div class="wrap book">
+        <div>
+          <h2>Réserve ta place</h2>
+          <p class="sub">Choisis ta formation et ta rentrée. Ta demande part prête sur WhatsApp, on te rappelle pour finaliser.</p>
+          <dl class="info">
+            <dt>Adresse</dt><dd>Carrefour Warda, Yaoundé (derrière la station)</dd>
+            <dt>Secrétariat</dt><dd>Lundi – Samedi : 8h00 – 17h00</dd>
+            <dt>Paiement</dt><dd>Espèces, MTN Mobile Money, Orange Money</dd>
+          </dl>
+        </div>
+        <div class="booking">
+          <label for="service">Formation</label><select id="service"></select>
+          <label for="day">Rentrée</label><select id="day"></select>
+          <label for="level">Ton niveau</label>
+          <select id="level"><option>Débutant</option><option>Intermédiaire</option><option>Avancé</option></select>
+          <label for="name">Ton nom</label><input id="name" type="text" placeholder="Ex. Marie Fotso" autocomplete="name">
+          <p id="recap" class="recap"></p>
+          <a class="btn" id="send" href="#">Envoyer sur WhatsApp</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer><div class="wrap">Académie Horizon · Yaoundé, Cameroun · Site de démonstration</div></footer>
+  <script src="script.js"></script>
+</body>
+</html>

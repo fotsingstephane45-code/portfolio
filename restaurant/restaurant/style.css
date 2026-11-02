@@ -1,0 +1,215 @@
+/* =====================================================
+   1. VARIABLES DE COULEURS
+   On les déclare une seule fois ici, puis on les utilise
+   partout avec var(--nom). Pour changer l'ambiance du
+   site, il suffit de modifier ces valeurs.
+   ===================================================== */
+:root {
+  --bg: #fffdf6;      /* fond de la page */
+  --ink: #1d2a22;     /* couleur du texte */
+  --muted: #5b675f;   /* texte secondaire (gris) */
+  --green: #14452f;   /* vert foncé : tableau du menu, pied de page */
+  --sun: #f4b41a;     /* jaune : en-tête, prix */
+  --chili: #c8321e;   /* rouge piment : numéros, barre de commande */
+  --card: #ffffff;    /* fond des cartes */
+  --line: #e4dfcf;    /* bordures */
+  color-scheme: light;
+}
+
+/* Mode sombre : si le téléphone de la personne est en mode sombre,
+   on remplace seulement les couleurs qui changent. */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #10201a;
+    --ink: #f3efe2;
+    --muted: #a9b5ab;
+    --green: #0b2a1d;
+    --card: #173226;
+    --line: #2a4538;
+    color-scheme: dark;
+  }
+}
+
+/* =====================================================
+   2. STYLES DE BASE (appliqués à toute la page)
+   ===================================================== */
+*, *::before, *::after { box-sizing: border-box; } /* la largeur inclut le padding : plus simple à calculer */
+html { scroll-behavior: smooth; }                  /* défilement doux vers les sections (#menu, #infos) */
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font: 400 1.05rem/1.6 "DM Sans", system-ui, sans-serif;
+}
+h1, h2, h3 {
+  font-family: "Bricolage Grotesque", system-ui, sans-serif;
+  line-height: 1.05;
+  margin: 0;
+}
+a { color: inherit; }
+/* Contour visible quand on navigue au clavier (accessibilité) */
+:focus-visible { outline: 3px solid var(--chili); outline-offset: 3px; }
+
+/* .wrap : centre le contenu et limite sa largeur à 1040 px */
+.wrap { max-width: 1040px; margin: 0 auto; padding: 0 20px; }
+
+/* =====================================================
+   3. EN-TÊTE (HERO) : bloc jaune du haut de page
+   ===================================================== */
+header.hero { background: var(--sun); color: #1d2a22; padding: 28px 0 56px; }
+
+/* Barre de navigation : nom à gauche, liens à droite */
+nav { display: flex; justify-content: space-between; align-items: center; gap: 12px; font-weight: 500; }
+nav b { font-family: "Bricolage Grotesque", sans-serif; font-size: 1.1rem; }
+nav a { text-decoration: none; margin-left: 16px; }
+
+/* Grand titre : clamp(min, idéal, max) adapte la taille à l'écran */
+.hero h1 { font-size: clamp(2.8rem, 10vw, 6rem); font-weight: 800; margin: 48px 0 18px; max-width: 11ch; }
+.hero p  { font-size: 1.2rem; max-width: 34ch; margin: 0 0 26px; }
+
+/* Disposition texte + photo : une colonne sur téléphone, deux sur ordinateur */
+.hgrid { display: grid; gap: 28px; align-items: center; }
+.heroimg { width: 100%; max-height: 420px; object-fit: cover; border-radius: 20px; display: block; }
+
+/* =====================================================
+   4. BOUTONS
+   ===================================================== */
+.btn {
+  display: inline-block;
+  background: var(--green);
+  color: #fff;
+  padding: 14px 24px;
+  border-radius: 999px;       /* très grand arrondi = forme de pilule */
+  font: inherit;
+  font-weight: 500;
+  text-decoration: none;
+  border: 0;
+  cursor: pointer;
+}
+/* Variante "alt" : bouton transparent avec simple contour */
+.btn.alt { background: transparent; color: inherit; border: 2px solid currentColor; margin-left: 8px; }
+
+/* =====================================================
+   5. SECTIONS ET TITRES
+   ===================================================== */
+section { padding: 56px 0; }
+h2 { font-size: clamp(1.9rem, 5vw, 2.8rem); font-weight: 800; margin-bottom: 8px; }
+.sub { color: var(--muted); margin: 0 0 28px; max-width: 50ch; }
+
+/* =====================================================
+   6. MENU : filtres + catalogue de cartes
+   (les cartes .card sont créées par script.js)
+   ===================================================== */
+/* Boutons de catégories (Tout, Grillades, Plats du pays, Boissons) */
+.filtres { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 22px; }
+.filtres button {
+  font: inherit; cursor: pointer;
+  padding: 8px 18px; border-radius: 999px;
+  border: 2px solid var(--green); background: transparent; color: var(--ink);
+}
+.filtres button[aria-pressed="true"] { background: var(--green); color: #f6f1e0; }
+
+/* Grille : 1 colonne sur téléphone, 2 sur tablette, 3 sur ordinateur */
+.grid { display: grid; grid-template-columns: minmax(0, 1fr); gap: 18px; }
+
+/* Une carte = photo | nom + description | prix + boutons +/- */
+.card { background: var(--card); border: 1px solid var(--line); border-radius: 16px; overflow: hidden; display: flex; flex-direction: column; }
+.card[hidden] { display: none; }
+.photo { aspect-ratio: 4 / 3; background: var(--line); position: relative; overflow: hidden; }
+/* position: absolute = la photo remplit toujours la case 4:3, quelle que soit sa taille d'origine */
+.photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; }
+/* Si la photo n'existe pas encore : motif rayé + petit texte */
+.photo.vide { background: repeating-linear-gradient(45deg, var(--line) 0 12px, transparent 12px 24px); }
+.photo.vide img { display: none; }
+.photo.vide::after { content: "Photo à ajouter"; position: absolute; inset: 0; display: grid; place-items: center; color: var(--muted); font-size: .9rem; }
+.card .t { padding: 16px 18px 6px; flex: 1; }
+.card h3 { font-size: 1.25rem; font-weight: 500; }
+.card small { color: var(--muted); font-size: .92rem; display: block; margin-top: 4px; }
+.card .bas { display: flex; justify-content: space-between; align-items: center; padding: 10px 18px 18px; }
+
+.price { font-family: "Bricolage Grotesque", sans-serif; font-weight: 800; color: var(--chili); white-space: nowrap; font-size: 1.1rem; }
+
+/* Boutons rond + et – avec la quantité au milieu */
+.qty { display: flex; align-items: center; gap: 10px; }
+.qty button {
+  width: 36px; height: 36px;
+  border-radius: 50%;
+  border: 2px solid var(--chili);
+  background: transparent;
+  color: var(--chili);
+  font-size: 1.2rem; line-height: 1;
+  cursor: pointer;
+}
+.qty button:hover { background: var(--chili); color: #fff; }
+.qty span { min-width: 1.4ch; text-align: center; font-weight: 500; }
+
+/* =====================================================
+   7. ÉTAPES "COMMENT COMMANDER"
+   Le CSS compte lui-même : counter-increment ajoute 1 à chaque <li>
+   et ::before affiche le numéro dans un cercle rouge.
+   ===================================================== */
+ol.steps { list-style: none; counter-reset: s; padding: 0; margin: 0; display: grid; gap: 14px; }
+ol.steps li {
+  counter-increment: s;
+  display: flex; gap: 16px; align-items: flex-start;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 18px;
+}
+ol.steps li::before {
+  content: counter(s);
+  background: var(--chili); color: #fff;
+  font: 800 1.1rem "Bricolage Grotesque", sans-serif;
+  width: 36px; height: 36px;
+  border-radius: 50%;
+  display: grid; place-items: center;
+  flex: none;
+}
+
+/* =====================================================
+   8. INFOS PRATIQUES
+   ===================================================== */
+.info { display: grid; gap: 24px; }
+.info dt { font-weight: 500; margin-top: 10px; }
+.info dd { margin: 0; color: var(--muted); }
+
+/* =====================================================
+   9. PIED DE PAGE
+   ===================================================== */
+footer { background: var(--green); color: #f6f1e0; padding: 28px 0 90px; font-size: .95rem; }
+/* padding du bas = 90px pour que la barre de commande ne cache pas le texte */
+
+/* =====================================================
+   10. BARRE DE COMMANDE FIXE (en bas de l'écran)
+   Cachée par défaut (display: none). La classe .on est ajoutée
+   par script.js dès qu'un plat est choisi.
+   ===================================================== */
+#cart {
+  position: fixed; left: 0; right: 0; bottom: 0;   /* collée en bas, sur toute la largeur */
+  padding: 12px 20px;
+  background: var(--chili); color: #fff;
+  display: none;
+  justify-content: space-between; align-items: center; gap: 12px;
+  z-index: 5;                                      /* passe au-dessus du reste */
+}
+#cart.on { display: flex; }
+#cart a { background: #fff; color: var(--chili); padding: 10px 18px; border-radius: 999px; text-decoration: none; font-weight: 500; }
+
+/* =====================================================
+   11. ADAPTATION AUX ÉCRANS
+   ===================================================== */
+/* Écrans à partir de 760 px (tablette, ordinateur) : on passe en colonnes */
+@media (min-width: 760px) {
+  .hgrid { grid-template-columns: 1.1fr .9fr; }  /* texte un peu plus large que la photo */
+  .info { grid-template-columns: 1fr 1fr; }
+  ol.steps { grid-template-columns: repeat(3, 1fr); }
+  .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (min-width: 1000px) {
+  .grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+/* Si la personne a désactivé les animations dans son téléphone, on les coupe */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+}

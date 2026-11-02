@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <!-- Adapte la page aux téléphones -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Gaston Stéphane – Développeur web à Yaoundé</title>
+  <!-- Description affichée par Google sous le titre -->
+  <meta name="description" content="Développeur web à Yaoundé : sites vitrines, boutiques en ligne et applications web. Découvrez mes projets et contactez-moi sur WhatsApp.">
+  <!-- Police : Inter (très simple et lisible) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- ========== EN-TÊTE ========== -->
+  <header class="hero">
+    <div class="wrap">
+      <nav>
+        <b>Gaston Stéphane</b>
+        <span><a href="#projets">Projets</a><a href="#services">Services</a><a class="nav-btn" href="#contact">Me contacter</a></span>
+      </nav>
+
+      <p class="badge">Disponible pour de nouveaux projets</p>
+      <h1>Je crée des sites web pour les commerces de Yaoundé.</h1>
+      <p class="lead">Sites vitrines, boutiques en ligne et applications web. Chaque projet est pensé pour le téléphone, avec un bouton WhatsApp pour que vos clients vous contactent facilement.</p>
+      <!-- data-wa : le lien WhatsApp de ces boutons est rempli par script.js -->
+      <a class="btn" data-wa href="#">Écrire sur WhatsApp</a>
+      <a class="btn ghost" href="#projets">Voir mes projets</a>
+    </div>
+  </header>
+
+  <main>
+    <!-- ========== COMPÉTENCES (une pastille par technologie, créées par script.js) ========== -->
+    <section class="skills">
+      <div class="wrap">
+        <p class="label">Technologies</p>
+        <div class="chips" id="skills"></div>
+      </div>
+    </section>
+
+    <!-- ========== PROJETS (cartes créées par script.js) ========== -->
+    <section id="projets">
+      <div class="wrap">
+        <h2>Mes projets</h2>
+        <p class="sub">Un client réel et plusieurs sites de démonstration, un par secteur d’activité.</p>
+        <div class="grid" id="grid"></div>
+      </div>
+    </section>
+
+    <!-- ========== SERVICES ========== -->
+    <section id="services" class="soft">
+      <div class="wrap">
+        <h2>Ce que je propose</h2>
+        <div class="services">
+          <div><h3>Site vitrine</h3><p>Une page claire avec vos produits, vos horaires, votre adresse et un bouton pour vous écrire.</p></div>
+          <div><h3>Catalogue et commande WhatsApp</h3><p>Vos clients choisissent un article et la commande arrive toute prête sur votre WhatsApp.</p></div>
+          <div><h3>Application web</h3><p>Une application sur mesure : comptes utilisateurs, formulaires, tableau de bord.</p></div>
+        </div>
+        <p class="note">Devis gratuit : décrivez-moi votre activité sur WhatsApp et je vous réponds avec une proposition.</p>
+      </div>
+    </section>
+
+    <!-- ========== CONTACT ========== -->
+    <section id="contact" class="dark">
+      <div class="wrap center">
+        <h2>Un projet en tête ?</h2>
+        <p class="sub">Parlons-en. Je réponds sur WhatsApp.</p>
+        <a class="btn" data-wa href="#">Écrire sur WhatsApp</a>
+      </div>
+    </section>
+  </main>
+
+  <footer><div class="wrap">Gaston Stéphane · Développeur web · Yaoundé, Cameroun</div></footer>
+  <script src="script.js"></script>
+</body>
+</html>

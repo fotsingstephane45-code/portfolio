@@ -1,0 +1,138 @@
+/* =====================================================
+   1. VARIABLES (couleurs et motif de croix médicales)
+   ===================================================== */
+:root {
+  --navy: #0b2f3a;    /* bleu nuit : titres, sections sombres */
+  --teal: #0e8f83;    /* vert médical : boutons et accents */
+  --mint: #d9f3ee;    /* menthe pâle : fonds doux */
+  --bg: #f7fcfb;      /* fond de page */
+  --ink: #12303a;     /* texte */
+  --muted: #587079;   /* texte secondaire */
+  --coral: #ff6b57;   /* corail : barre d'urgence */
+  --line: #d3e8e4;
+  /* Petit motif de croix (SVG) utilisé quand il n'y a pas encore de photo */
+  --cross: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='44' height='44'%3E%3Cpath d='M22 12v20M12 22h20' stroke='%23ffffff' stroke-width='4' stroke-linecap='round' stroke-opacity='.35'/%3E%3C/svg%3E");
+}
+
+/* =====================================================
+   2. STYLES DE BASE
+   ===================================================== */
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { margin: 0; background: var(--bg); color: var(--ink); font: 400 1.05rem/1.6 "Nunito Sans", system-ui, sans-serif; }
+h1, h2, h3 { margin: 0; line-height: 1.1; color: var(--navy); }
+a { color: inherit; }
+:focus-visible { outline: 3px solid var(--coral); outline-offset: 3px; }
+.wrap { max-width: 1040px; margin: 0 auto; padding: 0 20px; }
+section { padding: 72px 0; }
+h2 { font-size: clamp(1.9rem, 5vw, 2.8rem); font-weight: 800; margin-bottom: 10px; }
+.sub { color: var(--muted); margin: 0 0 32px; max-width: 52ch; }
+section.soft { background: var(--mint); }
+
+/* Section sombre : fond bleu nuit, texte clair */
+.dark { background: var(--navy); color: #e6f3f1; }
+.dark h2 { color: #fff; }
+.dark .sub { color: #a9c7c3; }
+
+/* =====================================================
+   3. BARRE D'URGENCE (corail, tout en haut)
+   ===================================================== */
+.urgence { background: var(--coral); color: #fff; text-align: center; padding: 9px 16px; font-weight: 700; font-size: .95rem; }
+.urgence a { text-decoration: underline; }
+
+/* =====================================================
+   4. EN-TÊTE : fond menthe dégradé
+   ===================================================== */
+.hero { padding: 22px 0 72px; background: linear-gradient(180deg, var(--mint), var(--bg)); }
+nav { display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+nav b { font-size: 1.15rem; font-weight: 800; color: var(--navy); }
+.nav-btn { text-decoration: none; background: var(--navy); color: #fff; padding: 9px 18px; border-radius: 999px; font-weight: 700; font-size: .95rem; }
+.hgrid { display: grid; gap: 40px; align-items: center; margin-top: 44px; }
+.hero h1 { font-size: clamp(2.2rem, 7.5vw, 3.8rem); font-weight: 800; margin-bottom: 18px; }
+.lead { font-size: 1.15rem; color: var(--muted); max-width: 46ch; margin: 0 0 28px; }
+
+/* Badge "Ouvert / Fermé" : un point coloré + le texte (couleur via .open / .closed) */
+.badge { display: inline-flex; align-items: center; gap: 8px; margin: 0 0 16px; padding: 7px 14px; background: #fff; border: 1px solid var(--line); border-radius: 999px; font-weight: 700; font-size: .92rem; }
+.badge::before { content: ""; width: 10px; height: 10px; border-radius: 50%; background: var(--muted); }
+.badge.open::before { background: #1fb36b; }
+.badge.closed::before { background: var(--coral); }
+
+/* =====================================================
+   5. BOUTONS
+   ===================================================== */
+.btn { display: inline-block; background: var(--teal); color: #fff; padding: 15px 28px; border-radius: 14px; font-weight: 800; text-decoration: none; margin: 0 8px 8px 0; }
+.btn.ghost { background: transparent; color: var(--navy); border: 2px solid var(--navy); }
+
+/* =====================================================
+   6. VISUEL PRINCIPAL ET AVATARS : photo > croix > dégradé
+   Si le fichier photo n'existe pas, on voit le motif de croix.
+   ===================================================== */
+.visual {
+  width: 100%; aspect-ratio: 5 / 4;
+  border-radius: 28px 28px 120px 28px;                /* un coin très arrondi = forme douce */
+  background-image: url(images/entete.jpg), var(--cross), linear-gradient(150deg, var(--teal), var(--navy));
+  background-size: cover, 44px, cover;
+  background-repeat: no-repeat, repeat, no-repeat;
+  background-position: center;
+  box-shadow: 14px 14px 0 var(--mint);
+}
+.avatar {
+  width: 120px; height: 120px; border-radius: 50%; margin: 0 auto 14px;
+  background-size: cover, 44px, cover; background-repeat: no-repeat, repeat, no-repeat; background-position: center top;
+  border: 4px solid #fff; box-shadow: 0 0 0 3px var(--teal);
+}
+.a1 { background-image: url(images/equipe-1.jpg), var(--cross), linear-gradient(150deg, #0e8f83, #0b2f3a); }
+.a2 { background-image: url(images/equipe-2.jpg), var(--cross), linear-gradient(150deg, #3ec9a7, #0e8f83); }
+.a3 { background-image: url(images/equipe-3.jpg), var(--cross), linear-gradient(150deg, #ff6b57, #0e8f83); }
+
+/* =====================================================
+   7. CHIFFRES CLÉS
+   ===================================================== */
+.stats { padding: 40px 0; background: var(--navy); color: #fff; }
+.stats .wrap { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; text-align: center; }
+.stats b { display: block; font-size: clamp(1.5rem, 6vw, 2.5rem); font-weight: 800; color: #5ee0c2; }
+.stats span { color: #b7d3cf; font-size: .95rem; }
+
+/* =====================================================
+   8. CARTES DES SPÉCIALITÉS (créées par script.js)
+   ===================================================== */
+.cards { display: grid; gap: 16px; }
+.card { background: #fff; border: 1px solid var(--line); border-radius: 20px; padding: 24px; display: flex; flex-direction: column; gap: 6px; transition: transform .2s, box-shadow .2s; }
+.card:hover { transform: translateY(-4px); box-shadow: 0 14px 30px rgba(14, 143, 131, .15); }
+.card .ico { width: 48px; height: 48px; border-radius: 14px; background: var(--mint); display: grid; place-items: center; font-size: 1.5rem; margin-bottom: 8px; }
+.card h3 { font-size: 1.25rem; }
+.card small { color: var(--muted); }
+.card .price { font-size: 1.5rem; font-weight: 800; color: var(--teal); margin: 8px 0 14px; }
+.card button { margin-top: auto; border: 2px solid var(--teal); color: var(--teal); background: transparent; border-radius: 12px; padding: 10px 18px; font: inherit; font-weight: 800; cursor: pointer; }
+.card button:hover { background: var(--teal); color: #fff; }
+
+/* =====================================================
+   9. ÉQUIPE
+   ===================================================== */
+.team { display: grid; gap: 18px; }
+.doc { background: #fff; border-radius: 20px; padding: 26px; text-align: center; }
+.doc p { margin: 4px 0 0; color: var(--muted); }
+
+/* =====================================================
+   10. RENDEZ-VOUS ET INFOS
+   ===================================================== */
+.book { display: grid; gap: 36px; }
+.booking { background: #fff; color: var(--ink); border-radius: 24px; padding: 26px; display: grid; gap: 8px; }
+.booking label { font-weight: 700; margin-top: 8px; }
+.booking select, .booking input { width: 100%; padding: 13px 14px; font: inherit; color: var(--ink); background: #fff; border: 2px solid var(--line); border-radius: 12px; }
+.recap { margin: 12px 0 6px; padding: 14px; background: var(--mint); border-radius: 12px; }
+.booking .btn { text-align: center; margin: 0; }
+.booking small { color: var(--muted); }
+.info dt { font-weight: 800; color: #5ee0c2; margin-top: 14px; }
+.info dd { margin: 0; color: #cfe3e0; }
+footer { background: #071f27; color: #8fb0ab; padding: 26px 0; font-size: .95rem; }
+
+/* =====================================================
+   11. GRANDS ÉCRANS (à partir de 760 px)
+   ===================================================== */
+@media (min-width: 760px) {
+  .hgrid { grid-template-columns: 1.1fr .9fr; }
+  .cards, .team { grid-template-columns: repeat(3, 1fr); }
+  .book { grid-template-columns: 1fr 1fr; align-items: start; }
+}
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } .card { transition: none; } }

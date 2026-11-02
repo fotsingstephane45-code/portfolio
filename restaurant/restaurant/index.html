@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <!-- Rend le site adapté aux téléphones (sans cette ligne, il s'afficherait minuscule) -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Le Braisé du Mfoundi – Poisson et poulet braisés à Yaoundé</title>
+
+  <!-- Polices Google : Bricolage Grotesque (titres) et DM Sans (texte) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;800&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet">
+
+  <!-- Toute la mise en forme est dans style.css -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- ========== EN-TÊTE (bloc jaune) : nom, titre, boutons, photo ========== -->
+  <header class="hero">
+    <div class="wrap">
+
+      <!-- Barre de navigation : nom du restaurant + liens vers les sections -->
+      <nav>
+        <b>Le Braisé du Mfoundi</b>
+        <span><a href="#menu">Menu</a><a href="#infos">Infos</a></span>
+      </nav>
+
+      <!-- hgrid = deux colonnes sur ordinateur (texte à gauche, photo à droite) -->
+      <div class="hgrid">
+        <div>
+          <h1>Braisé comme à la maison.</h1>
+          <p>Poisson, poulet et soya grillés au feu de bois, servis avec bâton de manioc ou plantain. Sur place ou en livraison à Yaoundé.</p>
+
+          <!-- Le lien #menu fait défiler la page jusqu'à la section menu -->
+          <a class="btn" href="#menu">Voir le menu</a>
+          <!-- Le href de ce bouton est rempli par script.js (lien WhatsApp) -->
+          <a class="btn alt" id="wa-top" href="#">Écrire sur WhatsApp</a>
+        </div>
+
+        <!-- Photo principale. Le texte "alt" décrit l'image (utile pour l'accessibilité et Google) -->
+        <img class="heroimg" src="images/poisson-braise.jpg" alt="Poisson braisé avec plantains frais et sauce pimentée">
+      </div>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ========== SECTION MENU ========== -->
+    <section id="menu">
+      <div class="wrap">
+        <h2>Le menu du jour</h2>
+        <p class="sub">Choisis une catégorie, ajoute tes plats avec + et –, puis envoie ta commande en un clic sur WhatsApp.</p>
+        <!-- Ces deux blocs sont vides : script.js y ajoute les boutons de catégories et une carte par plat -->
+        <div class="filtres" id="filtres" role="group" aria-label="Catégories"></div>
+        <div class="grid" id="board"></div>
+      </div>
+    </section>
+
+    <!-- ========== SECTION "COMMENT COMMANDER" (3 étapes) ========== -->
+    <section>
+      <div class="wrap">
+        <h2>Commander, c’est simple</h2>
+        <p class="sub">Pas de compte à créer, pas d’application à installer.</p>
+        <!-- Liste ordonnée : les numéros 1, 2, 3 sont ajoutés par le CSS -->
+        <ol class="steps">
+          <li><div><strong>Choisis</strong><br>Ajoute tes plats dans le menu ci-dessus.</div></li>
+          <li><div><strong>Envoie</strong><br>Ta commande s’écrit toute seule dans WhatsApp.</div></li>
+          <li><div><strong>Reçois</strong><br>On confirme le prix de la livraison et on prépare.</div></li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ========== SECTION INFOS PRATIQUES ========== -->
+    <section id="infos">
+      <div class="wrap">
+        <h2>Venir nous voir</h2>
+        <div class="info">
+          <!-- dl / dt / dd = liste de définitions : un titre (dt) suivi de son texte (dd) -->
+          <dl>
+            <dt>Adresse</dt><dd>Carrefour Mvog-Ada, Yaoundé<br>(en face de la pharmacie)</dd>
+            <dt>Horaires</dt><dd>Lundi – Samedi : 11h00 – 22h30<br>Dimanche : 12h00 – 21h00</dd>
+            <dt>Paiement</dt><dd>Espèces, MTN Mobile Money, Orange Money</dd>
+          </dl>
+          <dl>
+            <dt>Livraison</dt><dd>Dans tout Yaoundé, entre 30 et 45 minutes selon le quartier.</dd>
+            <dt>Événements</dt><dd>Anniversaires, réunions, mariages : demande un devis sur WhatsApp.</dd>
+          </dl>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ========== PIED DE PAGE ========== -->
+  <footer>
+    <div class="wrap">Le Braisé du Mfoundi · Yaoundé, Cameroun · Site de démonstration</div>
+  </footer>
+
+  <!-- ========== BARRE DE COMMANDE (fixée en bas de l'écran) ==========
+       Cachée au départ. script.js l'affiche dès qu'un plat est choisi. -->
+  <div id="cart">
+    <span id="sum"></span>
+    <a id="send" href="#">Commander sur WhatsApp</a>
+  </div>
+
+  <!-- Le JavaScript est chargé en dernier pour que la page s'affiche d'abord -->
+  <script src="script.js"></script>
+</body>
+</html>

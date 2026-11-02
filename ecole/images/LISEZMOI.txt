@@ -1,0 +1,3 @@
+Ajoute ici tes photos en .jpg (moins de 200 Ko chacune) :
+entete.jpg (paysage), vie-1.jpg, vie-2.jpg, vie-3.jpg (verticales)
+Tant qu'un fichier est absent, un motif de points s'affiche a sa place.

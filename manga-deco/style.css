@@ -1,0 +1,116 @@
+/* ===== Manga Deco – styles =====
+   Couleurs : vert profond, laiton doré, rose poudré, blanc chaud.
+   Pour changer une couleur, modifiez-la ici, en haut. */
+:root{
+  --vert:#0f3b36; --vert2:#164d46; --or:#c99a3d; --or-clair:#e6c374;
+  --rose:#f3dcd5; --blanc:#fffdfa; --encre:#1d2523; --gris:#5d6866;
+}
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth}
+body{font-family:'Jost',system-ui,sans-serif;color:var(--encre);background:var(--blanc);line-height:1.6;font-size:17px}
+h1,h2,h3{font-family:'Cormorant Garamond',Georgia,serif;font-weight:600;line-height:1.1}
+h2{font-size:clamp(2rem,5vw,3rem);color:var(--vert);margin-bottom:.6rem}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--or);outline-offset:3px}
+
+/* En-tête (accueil) : fond clair, grand titre et rideau suspendu à sa tringle.
+   Toutes les classes commencent par "hd" pour ne pas se mélanger avec le reste du site. */
+.hd{
+  --hd-leaf:#23402f; --hd-gold:#b98a3e; --hd-rose:#d98f9d; --hd-paper:#fbf8f3; --hd-ink:#1f2a23; --hd-muted:#66716a;
+  /* Plis de rideau : bandes verticales claires répétées (dessinées en CSS) */
+  --hd-folds:repeating-linear-gradient(90deg,rgba(255,255,255,0) 0 18px,rgba(255,255,255,.16) 18px 36px);
+  padding:22px 0 80px;
+  background:radial-gradient(520px 420px at 95% 5%,rgba(217,143,157,.35),transparent 70%),var(--hd-paper);
+}
+.hd-wrap{max-width:1100px;margin:0 auto;padding:0 5vw}
+.hd-nav{display:flex;justify-content:space-between;align-items:center;gap:12px}
+.hd-nav b{font:700 1.35rem 'Cormorant Garamond',Georgia,serif;color:var(--hd-leaf)}
+.hd-call{text-decoration:none;border:2px solid var(--hd-leaf);color:var(--hd-leaf);padding:7px 18px;border-radius:999px;font-weight:500}
+.hd-grid{display:grid;gap:52px;align-items:center;margin-top:44px}
+.hd-tag{color:var(--hd-gold);font-weight:500;margin:0 0 14px}
+.hd h1{font-size:clamp(3rem,10vw,5.6rem);font-weight:600;line-height:1.02;color:var(--hd-leaf);margin:0 0 20px}
+.hd-lead{font-size:1.15rem;color:var(--hd-muted);max-width:42ch;margin:0 0 28px}
+.hd-btn{display:inline-block;background:var(--hd-leaf);color:#fff;padding:14px 28px;border-radius:999px;font-weight:500;text-decoration:none;margin:0 8px 10px 0}
+.hd-btn.ghost{background:transparent;color:var(--hd-ink);border:2px solid currentColor}
+
+/* Rideau : couches superposées photo > plis > dégradé. Si la photo est absente, on voit les plis.
+   La tringle (::before) et ses anneaux (::after) sont dessinés en CSS. */
+.hd-visual{
+  position:relative;width:100%;max-width:420px;margin:22px auto 0;aspect-ratio:4/5;
+  border-radius:0 0 26px 26px;
+  background-image:url(images/entete.jpg),var(--hd-folds),linear-gradient(170deg,var(--hd-rose),#8d4f66 70%,#3a6148);
+  background-size:cover,auto,cover;background-repeat:no-repeat,repeat,no-repeat;background-position:center;
+  box-shadow:0 24px 40px rgba(35,64,47,.22);
+}
+.hd-visual::before{content:"";position:absolute;top:-12px;left:-14px;right:-14px;height:10px;border-radius:10px;background:linear-gradient(var(--hd-gold),#8a6428)}
+.hd-visual::after{content:"";position:absolute;top:-20px;left:4px;right:4px;height:28px;background:repeating-linear-gradient(90deg,var(--hd-gold) 0 6px,transparent 6px 36px);border-radius:4px}
+@media(min-width:760px){.hd-grid{grid-template-columns:1.15fr .85fr}}
+
+/* Boutons */
+.btn{display:inline-block;padding:.85rem 1.5rem;border-radius:999px;font-weight:600;text-decoration:none;border:2px solid transparent;cursor:pointer;font:inherit;font-weight:600;transition:transform .2s,background .2s}
+.btn:hover{transform:translateY(-2px)}
+.btn.or{background:var(--or);color:#1b1405}
+.btn.or:hover{background:var(--or-clair)}
+.btn.ligne{border-color:var(--or-clair);color:#fff}
+.btn.ligne-claire{border-color:var(--vert);color:var(--vert);margin-top:.6rem}
+
+/* Sections */
+.bloc{max-width:1100px;margin:0 auto;padding:5rem 5vw}
+.intro{color:var(--gris);max-width:40rem;margin-bottom:1.6rem}
+
+/* Catalogue */
+.filtres{display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:1.6rem}
+.filtres button{font:inherit;padding:.5rem 1.1rem;border-radius:999px;border:1.5px solid var(--vert);background:none;color:var(--vert);cursor:pointer}
+.filtres button[aria-pressed="true"]{background:var(--vert);color:#fff}
+.grille{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:1.4rem}
+.carte{display:flex;flex-direction:column;background:#fff;border-radius:6px 6px 22px 6px;overflow:hidden;border:1px solid #ece4dc}
+.vignette{aspect-ratio:4/5;background:var(--rose);position:relative;overflow:hidden}
+.vignette img{width:100%;height:100%;object-fit:cover;display:block}
+.vignette.vide{background:repeating-linear-gradient(45deg,var(--rose) 0 12px,#ecd0c7 12px 24px)}
+.vignette.vide::after{content:"Photo à ajouter";position:absolute;inset:auto 0 45% 0;text-align:center;color:var(--gris);font-size:.9rem}
+.vignette.vide img{display:none}
+.carte-corps{padding:1rem 1.1rem 1.2rem;display:flex;flex-direction:column;gap:.3rem;flex:1}
+.carte h3{font-size:1.5rem;color:var(--vert)}
+.carte p{color:var(--gris);font-size:.95rem;flex:1}
+.carte a{margin-top:.6rem;color:var(--vert);font-weight:600;text-decoration:none;border-bottom:2px solid var(--or);align-self:flex-start}
+
+/* Sur mesure */
+.mesure{background:var(--vert);color:#fff;padding:5rem 5vw}
+.mesure-in{max-width:44rem;margin:0 auto}
+.mesure h2{color:var(--or-clair)}
+.mesure p{color:#dfe9e6;margin-bottom:1.4rem}
+.etapes{margin:0 0 1.8rem;padding-left:1.4rem;display:grid;gap:.6rem}
+.etapes li::marker{color:var(--or-clair);font-weight:700}
+
+/* Boutique */
+.boutique{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center}
+.boutique p{margin-bottom:1rem}
+.photo-boutique{aspect-ratio:4/5;border-radius:6px 80px 6px 6px;overflow:hidden;background:repeating-linear-gradient(45deg,var(--rose) 0 12px,#ecd0c7 12px 24px);position:relative}
+.photo-boutique img{width:100%;height:100%;object-fit:cover;display:block}
+.photo-boutique.vide img{display:none}
+
+/* Contact */
+.contact{display:grid;grid-template-columns:1.3fr 1fr;gap:3rem;align-items:start}
+form{display:grid;gap:1rem}
+label{display:grid;gap:.3rem;font-weight:500;color:var(--vert)}
+input,select,textarea{font:inherit;padding:.75rem .9rem;border:1.5px solid #cfc6bd;border-radius:8px;background:#fff;color:var(--encre)}
+input:focus,select:focus,textarea:focus{outline:3px solid var(--or-clair);border-color:var(--or)}
+.coord{background:var(--rose);padding:1.8rem;border-radius:6px 40px 6px 6px}
+.coord h3{font-size:1.9rem;color:var(--vert);margin-bottom:.6rem}
+.coord p{margin-bottom:.8rem}
+.coord a{font-weight:600}
+.coord .btn{font-weight:600}
+
+footer{text-align:center;padding:2rem 5vw 5rem;color:var(--gris);font-size:.9rem}
+
+/* WhatsApp */
+.wa{position:fixed;right:1.1rem;bottom:1.1rem;z-index:30;width:58px;height:58px;border-radius:50%;background:#1faa59;display:grid;place-items:center;box-shadow:0 6px 18px rgba(0,0,0,.3)}
+
+/* Téléphone */
+@media(max-width:760px){
+  .boutique,.contact{grid-template-columns:1fr;gap:2rem}
+  .bloc{padding:3.5rem 5vw}
+}
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+}

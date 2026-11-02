@@ -1,0 +1,3 @@
+Ajoute ici tes photos en .jpg (moins de 200 Ko chacune) :
+entete.jpg (paysage), equipe-1.jpg, equipe-2.jpg, equipe-3.jpg (portraits)
+Tant qu'un fichier est absent, un motif de croix s'affiche a sa place.

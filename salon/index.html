@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <!-- Adapte la page aux téléphones -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Salon Reine Ngono – Coiffure et tresses à Yaoundé</title>
+  <!-- Police : Poppins (simple et lisible, utilisée partout) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- ========== EN-TÊTE : grand titre + arche décorative ========== -->
+  <header class="hero">
+    <div class="wrap">
+      <nav>
+        <b>Reine Ngono</b>
+        <a class="nav-btn" href="#reservation">Réserver</a>
+      </nav>
+
+      <div class="hgrid">
+        <div>
+          <p class="tag">Salon de coiffure · Bastos, Yaoundé</p>
+          <h1>Ta couronne,<br>notre savoir&#8209;faire.</h1>
+          <p class="lead">Tresses, tissages, soins et coupes réalisés avec soin. Réserve ton créneau en 1 minute, on confirme sur WhatsApp.</p>
+          <a class="btn" href="#reservation">Réserver ma place</a>
+          <a class="btn ghost" href="#services">Voir les tarifs</a>
+        </div>
+        <!-- Arche : motif tressé par défaut. Pour mettre une vraie photo : images/entete.jpg -->
+        <div class="arch" role="img" aria-label="Coiffure en tresses réalisée au salon"></div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ========== BANDEAU DÉFILANT (le texte est répété pour une boucle sans coupure) ========== -->
+  <div class="marquee" aria-hidden="true">
+    <div class="track">
+      <span>Tresses</span><span>Tissages</span><span>Vanilles</span><span>Soins</span><span>Coupes</span><span>Barbe</span>
+      <span>Tresses</span><span>Tissages</span><span>Vanilles</span><span>Soins</span><span>Coupes</span><span>Barbe</span>
+    </div>
+  </div>
+
+  <main>
+    <!-- ========== CHIFFRES CLÉS ========== -->
+    <section class="stats">
+      <div class="wrap">
+        <div><b>8 ans</b><span>d’expérience</span></div>
+        <div><b>2 000+</b><span>clientes coiffées</span></div>
+        <div><b>4,9/5</b><span>note moyenne</span></div>
+      </div>
+    </section>
+
+    <!-- ========== PRESTATIONS (cartes créées par script.js) ========== -->
+    <section id="services">
+      <div class="wrap">
+        <h2>Nos prestations</h2>
+        <p class="sub">Prix à partir de. Le tarif final dépend de la longueur et du modèle.</p>
+        <div id="list" class="cards"></div>
+      </div>
+    </section>
+
+    <!-- ========== GALERIE : 4 arches, photos facultatives ========== -->
+    <section class="dark">
+      <div class="wrap">
+        <h2>Nos réalisations</h2>
+        <p class="sub">Un aperçu du travail de l’équipe.</p>
+        <div class="gallery">
+          <div class="arch sm g1" role="img" aria-label="Réalisation 1"></div>
+          <div class="arch sm g2" role="img" aria-label="Réalisation 2"></div>
+          <div class="arch sm g3" role="img" aria-label="Réalisation 3"></div>
+          <div class="arch sm g4" role="img" aria-label="Réalisation 4"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== AVIS CLIENTES ========== -->
+    <section>
+      <div class="wrap">
+        <h2>Elles nous recommandent</h2>
+        <div class="reviews">
+          <blockquote>« Mes tresses ont tenu 6 semaines et l’équipe est très douce. »<cite>Aïcha, Bastos</cite></blockquote>
+          <blockquote>« Ponctuelles, propres et le résultat est exactement mon modèle. »<cite>Carine, Omnisport</cite></blockquote>
+          <blockquote>« Je viens tous les mois pour mon soin, mes cheveux ont repris vie. »<cite>Nadège, Mvan</cite></blockquote>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== RÉSERVATION ========== -->
+    <section id="reservation" class="dark">
+      <div class="wrap book">
+        <div>
+          <h2>Réserve ta place</h2>
+          <p class="sub">Trois choix, un clic : ta demande part toute prête sur WhatsApp.</p>
+          <dl class="info">
+            <dt>Adresse</dt><dd>Quartier Bastos, Yaoundé (2e rue à gauche)</dd>
+            <dt>Horaires</dt><dd>Lundi – Samedi : 8h00 – 19h00</dd>
+            <dt>Paiement</dt><dd>Espèces, MTN Mobile Money, Orange Money</dd>
+          </dl>
+        </div>
+        <div class="booking">
+          <label for="service">Prestation</label><select id="service"></select>
+          <label for="day">Jour</label><select id="day"></select>
+          <label for="hour">Heure</label><select id="hour"></select>
+          <label for="name">Ton prénom</label><input id="name" type="text" placeholder="Ex. Aïcha" autocomplete="given-name">
+          <p id="recap" class="recap"></p>
+          <a class="btn" id="send" href="#">Envoyer sur WhatsApp</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer><div class="wrap">Salon Reine Ngono · Yaoundé, Cameroun · Site de démonstration</div></footer>
+  <script src="script.js"></script>
+</body>
+</html>

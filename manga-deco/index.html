@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Manga Deco – Rideaux, voilages et pots de fleurs à Yaoundé</title>
+<meta name="description" content="Boutique de décoration Manga Deco au carrefour Mec, Yaoundé : rideaux, voilages, tringles, pots de fleurs et plantes décoratives. Appelez le 695 51 51 55.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Jost:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- ===== EN-TÊTE : nom, accroche, boutons et rideau décoratif ===== -->
+<header class="hd" id="accueil">
+  <div class="hd-wrap">
+    <nav class="hd-nav" aria-label="Navigation principale">
+      <b>Manga Deco</b>
+      <!-- tel: lance l'appel directement sur un téléphone -->
+      <a class="hd-call" href="tel:+237695515155">Appeler</a>
+    </nav>
+
+    <div class="hd-grid">
+      <div>
+        <p class="hd-tag">Boutique de décoration · Carrefour Mec, Yaoundé</p>
+        <h1>Habillez votre maison avec élégance.</h1>
+        <p class="hd-lead">Rideaux, voilages, tringles et pots de fleurs pour le salon, la chambre et la terrasse. Venez les voir en boutique ou écrivez-nous sur WhatsApp.</p>
+        <a class="hd-btn" href="https://wa.me/237695515155" target="_blank" rel="noopener">Écrire sur WhatsApp</a>
+        <a class="hd-btn ghost" href="#catalogue">Voir le catalogue</a>
+      </div>
+      <!-- Rideau suspendu à une tringle dorée. La photo est images/entete.jpg -->
+      <div class="hd-visual" role="img" aria-label="Rideaux élégants de la boutique"></div>
+    </div>
+  </div>
+</header>
+
+<!-- ===== CATALOGUE (la liste est dans script.js) ===== -->
+<section class="bloc" id="catalogue">
+  <h2>Le catalogue</h2>
+  <p class="intro">Choisissez une catégorie. Un article vous plaît ? Un clic vous met en contact avec la boutique sur WhatsApp pour connaître le prix et la disponibilité.</p>
+  <div class="filtres" id="filtres" role="group" aria-label="Catégories"></div>
+  <div class="grille" id="grille"></div>
+</section>
+
+<!-- ===== SUR MESURE ===== -->
+<section class="mesure" id="mesure">
+  <div class="mesure-in">
+    <h2>Vos rideaux à la bonne taille</h2>
+    <p>Chaque fenêtre est différente. Donnez-nous la largeur et la hauteur, choisissez le tissu et la couleur, et nous préparons des rideaux faits pour votre pièce.</p>
+    <ol class="etapes">
+      <li><b>Mesurez</b> la largeur et la hauteur de la fenêtre.</li>
+      <li><b>Choisissez</b> le tissu, la couleur et la tringle.</li>
+      <li><b>Envoyez-nous</b> vos mesures par WhatsApp ou passez à la boutique.</li>
+    </ol>
+    <a class="btn or" href="#contact">Envoyer mes mesures</a>
+  </div>
+</section>
+
+<!-- ===== LA BOUTIQUE ===== -->
+<section class="bloc boutique" id="boutique">
+  <div class="photo-boutique" id="photoBoutique">
+    <img src="images/boutique.jpg" alt="La boutique Manga Deco au carrefour Mec">
+  </div>
+  <div>
+    <h2>La boutique</h2>
+    <p>Manga Deco est tenue par Madame Magadjou Danime Célestine, au carrefour Mec à Yaoundé. On y trouve de quoi habiller les fenêtres et décorer la maison : rideaux, voilages, tringles, pots et plantes.</p>
+    <p>Passez voir les tissus et les pots en vrai. Les couleurs à l'écran ne remplacent pas un tissu que l'on touche.</p>
+  </div>
+</section>
+
+<!-- ===== CONTACT ===== -->
+<section class="bloc contact" id="contact">
+  <div>
+    <h2>Écrivez-nous</h2>
+    <p class="intro">Remplissez le formulaire : votre message s'ouvre dans WhatsApp, prêt à être envoyé.</p>
+    <form id="formulaire">
+      <label>Votre nom
+        <input type="text" id="nom" required autocomplete="name">
+      </label>
+      <label>Ce qui vous intéresse
+        <select id="sujet">
+          <option>Rideaux</option>
+          <option>Voilages</option>
+          <option>Tringles et accessoires</option>
+          <option>Pots de fleurs</option>
+          <option>Plantes décoratives</option>
+          <option>Rideaux sur mesure</option>
+        </select>
+      </label>
+      <label>Votre message (mesures, couleurs, pièce…)
+        <textarea id="msg" rows="4"></textarea>
+      </label>
+      <button class="btn or" type="submit">Envoyer sur WhatsApp</button>
+    </form>
+  </div>
+  <aside class="coord">
+    <h3>Manga Deco</h3>
+    <p>Carrefour Mec, Yaoundé</p>
+    <p><a href="tel:+237695515155">695 51 51 55</a><br><a href="tel:+237677444465">677 44 44 65</a></p>
+    <p>Responsable : Magadjou Danime Célestine</p>
+    <a class="btn ligne-claire" href="https://wa.me/237695515155" target="_blank" rel="noopener">Discuter sur WhatsApp</a>
+  </aside>
+</section>
+
+<footer>© <span id="annee"></span> Manga Deco · Carrefour Mec, Yaoundé</footer>
+
+<!-- Bouton WhatsApp toujours visible -->
+<a class="wa" href="https://wa.me/237695515155" target="_blank" rel="noopener" aria-label="Écrire à Manga Deco sur WhatsApp">
+  <svg viewBox="0 0 32 32" width="30" height="30" aria-hidden="true"><path fill="#fff" d="M16 3a13 13 0 0 0-11 19.8L3 29l6.4-2A13 13 0 1 0 16 3zm0 2.4a10.6 10.6 0 1 1-5.6 19.6l-.4-.2-3.800 1.200 1.200-3.700-.3-.4A10.600 10.600 0 0 1 16 5.400zm-4 5.200c-.3 0-.7.100-1 .5-.4.400-1.300 1.200-1.300 3s1.300 3.500 1.500 3.700c.2.300 2.600 4.100 6.400 5.600 3.100 1.200 3.700 1 4.400.9.700-.1 2.200-.9 2.500-1.800.3-.9.300-1.600.2-1.800l-.6-.3-2.200-1.100c-.3-.1-.6-.2-.8.200l-1 1.200c-.2.200-.4.300-.7.100-.4-.2-1.400-.5-2.700-1.700-1-.9-1.600-2-1.800-2.300-.2-.4 0-.5.200-.7l.5-.6.300-.5c.1-.2 0-.4 0-.5l-1-2.400c-.3-.6-.5-.5-.7-.5z"/></svg>
+</a>
+
+<script src="script.js"></script>
+</body>
+</html>

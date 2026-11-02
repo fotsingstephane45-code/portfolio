@@ -1,0 +1,104 @@
+/* =====================================================
+   1. VARIABLES DE COULEURS
+   ===================================================== */
+:root {
+  --bg: #fafaf8;      /* fond de page */
+  --ink: #14161f;     /* texte et sections sombres */
+  --muted: #5d6275;   /* texte secondaire */
+  --accent: #ff5a1f;  /* orange vif : boutons et accents */
+  --soft: #f0efea;    /* fond des sections douces */
+  --line: #e2e1da;
+}
+
+/* =====================================================
+   2. STYLES DE BASE
+   ===================================================== */
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { margin: 0; background: var(--bg); color: var(--ink); font: 400 1.05rem/1.65 "Inter", system-ui, sans-serif; }
+h1, h2, h3 { margin: 0; line-height: 1.08; letter-spacing: -.02em; }
+a { color: inherit; }
+:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
+.wrap { max-width: 1040px; margin: 0 auto; padding: 0 20px; }
+section { padding: 72px 0; }
+h2 { font-size: clamp(2rem, 5.5vw, 2.9rem); font-weight: 800; margin-bottom: 10px; }
+.sub { color: var(--muted); margin: 0 0 30px; max-width: 52ch; }
+section.soft { background: var(--soft); }
+.dark { background: var(--ink); color: #fff; }
+.dark .sub { color: #b4b8c9; }
+.center { text-align: center; }
+.center .sub { margin-left: auto; margin-right: auto; }
+
+/* =====================================================
+   3. EN-TÊTE
+   ===================================================== */
+.hero { padding: 22px 0 80px; }
+nav { display: flex; justify-content: space-between; align-items: center; gap: 12px; margin-bottom: 64px; }
+nav b { font-size: 1.25rem; font-weight: 800; }
+nav span { display: flex; align-items: center; gap: 18px; font-weight: 500; font-size: .95rem; }
+nav a { text-decoration: none; }
+.nav-btn { background: var(--ink); color: #fff; padding: 9px 18px; border-radius: 999px; }
+/* Badge avec un point vert : indique que tu es disponible */
+.badge { display: inline-flex; align-items: center; gap: 8px; margin: 0 0 20px; padding: 7px 14px; background: #fff; border: 1px solid var(--line); border-radius: 999px; font-weight: 500; font-size: .9rem; }
+.badge::before { content: ""; width: 9px; height: 9px; border-radius: 50%; background: #1fb36b; }
+.hero h1 { font-size: clamp(2.5rem, 8.5vw, 5rem); font-weight: 800; max-width: 15ch; margin-bottom: 22px; }
+.lead { font-size: 1.2rem; color: var(--muted); max-width: 52ch; margin: 0 0 30px; }
+
+/* =====================================================
+   4. BOUTONS
+   ===================================================== */
+.btn { display: inline-block; background: var(--accent); color: #fff; padding: 15px 28px; border-radius: 14px; font-weight: 600; text-decoration: none; margin: 0 8px 8px 0; }
+.btn.ghost { background: transparent; color: var(--ink); border: 2px solid var(--ink); }
+
+/* =====================================================
+   5. TECHNOLOGIES (pastilles)
+   ===================================================== */
+.skills { padding: 28px 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); background: #fff; }
+.label { margin: 0 0 12px; font-weight: 600; color: var(--muted); font-size: .9rem; }
+.chips { display: flex; flex-wrap: wrap; gap: 10px; }
+.chips span { padding: 7px 16px; border-radius: 999px; background: var(--soft); font-weight: 500; font-size: .95rem; }
+
+/* =====================================================
+   6. CARTES DE PROJETS (créées par script.js)
+   ===================================================== */
+.grid { display: grid; gap: 20px; }
+.card { background: #fff; border: 1px solid var(--line); border-radius: 22px; overflow: hidden; display: flex; flex-direction: column; transition: transform .2s, box-shadow .2s; }
+.card:hover { transform: translateY(-4px); box-shadow: 0 16px 34px rgba(20, 22, 31, .12); }
+/* object-fit: contain = la photo est affichée ENTIÈRE, sans être coupée (des bandes claires peuvent apparaître sur les côtés).
+   Un clic sur la photo l'ouvre en grand (voir script.js). */
+.card img { display: block; width: 100%; aspect-ratio: 8 / 5; object-fit: contain; object-position: center; background: #e9e8e2; cursor: zoom-in; }
+/* Projets sans capture d'écran : un grand dégradé avec le nom */
+.noimg { aspect-ratio: 8 / 5; display: grid; place-items: center; font-size: 1.6rem; font-weight: 800; color: #fff; background: linear-gradient(135deg, var(--accent), #7a2cf0); text-align: center; padding: 16px; }
+.card .body { padding: 20px 22px 24px; display: flex; flex-direction: column; gap: 8px; flex: 1; }
+.tag { align-self: flex-start; font-size: .8rem; font-weight: 600; padding: 4px 12px; border-radius: 999px; background: #e7f7ef; color: #0f7a4a; }
+.tag.demo { background: var(--soft); color: var(--muted); }   /* étiquette grise pour les démos */
+.card h3 { font-size: 1.4rem; font-weight: 700; }
+.card p { margin: 0; color: var(--muted); font-size: .98rem; }
+.tech { font-size: .85rem; font-weight: 500; color: var(--ink); opacity: .7; }
+.card .go { margin-top: auto; padding-top: 10px; font-weight: 600; color: var(--accent); text-decoration: none; }
+.card .go.off { color: var(--muted); font-weight: 500; }          /* bouton grisé tant que la démo n'est pas en ligne */
+
+/* Fenêtre d'agrandissement : fond sombre et photo en grand, cachée tant qu'on n'a pas cliqué */
+.lightbox { position: fixed; inset: 0; z-index: 50; display: none; place-items: center; padding: 20px; background: rgba(10, 12, 20, .9); cursor: zoom-out; }
+.lightbox.on { display: grid; }
+.lightbox img { max-width: 100%; max-height: 100%; object-fit: contain; border-radius: 12px; }
+
+/* =====================================================
+   7. SERVICES
+   ===================================================== */
+.services { display: grid; gap: 18px; margin-top: 28px; }
+.services > div { background: #fff; border-radius: 20px; padding: 26px; }
+.services h3 { font-size: 1.25rem; margin-bottom: 8px; }
+.services p { margin: 0; color: var(--muted); }
+.note { margin: 28px 0 0; font-weight: 600; }
+
+/* =====================================================
+   8. PIED DE PAGE ET GRANDS ÉCRANS
+   ===================================================== */
+footer { background: #0c0e15; color: #8a8fa3; padding: 24px 0; font-size: .95rem; }
+@media (min-width: 760px) {
+  .grid { grid-template-columns: repeat(2, 1fr); }
+  .services { grid-template-columns: repeat(3, 1fr); }
+}
+@media (max-width: 520px) { nav span a:not(.nav-btn) { display: none; } }   /* sur petit téléphone, on garde seulement le bouton */
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } .card { transition: none; } }

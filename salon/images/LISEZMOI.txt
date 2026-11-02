@@ -1,0 +1,3 @@
+Ajoute ici tes photos (JPG, moins de 200 Ko chacune) avec ces noms :
+entete.jpg  realisation-1.jpg  realisation-2.jpg  realisation-3.jpg  realisation-4.jpg
+Tant qu'un fichier est absent, un fond rose degrade s'affiche a sa place.

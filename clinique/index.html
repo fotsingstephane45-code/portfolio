@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <!-- Adapte la page aux téléphones -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Clinique Sainte-Lumière – Soins et urgences à Yaoundé</title>
+  <!-- Police : Nunito Sans (simple, douce et très lisible) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- ========== BARRE URGENCES (toujours visible en haut) ========== -->
+  <div class="urgence">
+    Urgences 24h/24 :
+    <!-- tel: lance directement l'appel sur un téléphone -->
+    <a href="tel:+237652508451">+237 6 52 50 84 51</a>
+  </div>
+
+  <!-- ========== EN-TÊTE ========== -->
+  <header class="hero">
+    <div class="wrap">
+      <nav>
+        <b>Clinique Sainte-Lumière</b>
+        <a class="nav-btn" href="#rdv">Prendre rendez-vous</a>
+      </nav>
+
+      <div class="hgrid">
+        <div>
+          <!-- Badge "Ouvert / Fermé" : le texte est calculé par script.js selon l'heure -->
+          <p class="badge" id="status"></p>
+          <h1>Des soins de confiance, près de chez vous.</h1>
+          <p class="lead">Médecine générale, pédiatrie, maternité, dentaire et laboratoire réunis au même endroit, à Biyem-Assi.</p>
+          <a class="btn" href="#rdv">Prendre rendez-vous</a>
+          <a class="btn ghost" href="#specialites">Nos spécialités</a>
+        </div>
+        <!-- Photo d'en-tête : motif de croix par défaut, remplacé par images/entete.jpg -->
+        <div class="visual" role="img" aria-label="Équipe médicale de la clinique"></div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- ========== CHIFFRES CLÉS ========== -->
+    <section class="stats">
+      <div class="wrap">
+        <div><b>24h/24</b><span>urgences</span></div>
+        <div><b>12</b><span>médecins</span></div>
+        <div><b>15 ans</b><span>de présence</span></div>
+      </div>
+    </section>
+
+    <!-- ========== SPÉCIALITÉS (cartes créées par script.js) ========== -->
+    <section id="specialites">
+      <div class="wrap">
+        <h2>Nos spécialités</h2>
+        <p class="sub">Tarifs de consultation, hors examens complémentaires.</p>
+        <div id="list" class="cards"></div>
+      </div>
+    </section>
+
+    <!-- ========== ÉQUIPE (3 médecins, photos facultatives) ========== -->
+    <section class="soft">
+      <div class="wrap">
+        <h2>Votre équipe</h2>
+        <p class="sub">Des médecins à l’écoute, disponibles sur rendez-vous.</p>
+        <div class="team">
+          <div class="doc"><div class="avatar a1"></div><h3>Dr Mballa</h3><p>Médecine générale</p></div>
+          <div class="doc"><div class="avatar a2"></div><h3>Dr Tchoumi</h3><p>Pédiatrie</p></div>
+          <div class="doc"><div class="avatar a3"></div><h3>Dr Essomba</h3><p>Gynécologie et maternité</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== RENDEZ-VOUS ========== -->
+    <section id="rdv" class="dark">
+      <div class="wrap book">
+        <div>
+          <h2>Prendre rendez-vous</h2>
+          <p class="sub">Choisissez une spécialité, un jour et une heure. Votre demande part prête sur WhatsApp, l’accueil confirme.</p>
+          <dl class="info">
+            <dt>Adresse</dt><dd>Biyem-Assi, Yaoundé (face au rond-point)</dd>
+            <dt>Horaires</dt><dd>Lundi – Samedi : 7h00 – 20h00<br>Dimanche : 9h00 – 13h00<br>Urgences : 24h/24</dd>
+            <dt>Paiement</dt><dd>Espèces, Mobile Money, assurances conventionnées</dd>
+          </dl>
+        </div>
+        <div class="booking">
+          <label for="service">Spécialité</label><select id="service"></select>
+          <label for="day">Jour</label><select id="day"></select>
+          <label for="hour">Heure</label><select id="hour"></select>
+          <label for="name">Nom du patient</label><input id="name" type="text" placeholder="Ex. Jean Mbarga" autocomplete="name">
+          <p id="recap" class="recap"></p>
+          <a class="btn" id="send" href="#">Envoyer sur WhatsApp</a>
+          <small>En cas d’urgence, appelez directement le numéro en haut de page.</small>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer><div class="wrap">Clinique Sainte-Lumière · Yaoundé, Cameroun · Site de démonstration</div></footer>
+  <script src="script.js"></script>
+</body>
+</html>

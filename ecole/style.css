@@ -1,0 +1,126 @@
+/* =====================================================
+   1. VARIABLES (couleurs et motif de points)
+   ===================================================== */
+:root {
+  --blue: #2346d6;    /* bleu cobalt : couleur principale */
+  --deep: #0f1f5c;    /* bleu très foncé : sections sombres */
+  --orange: #ff8a1f;  /* orange : boutons et accents */
+  --tint: #eef2ff;    /* bleu très pâle : fonds doux */
+  --bg: #fafbff;      /* fond de page */
+  --ink: #141a3a;     /* texte */
+  --muted: #5b6288;   /* texte secondaire */
+  --line: #dbe1fb;
+  /* Motif de points (SVG) utilisé tant qu'il n'y a pas de photo */
+  --dots: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='26' height='26'%3E%3Ccircle cx='13' cy='13' r='3' fill='%23ffffff' fill-opacity='.3'/%3E%3C/svg%3E");
+}
+
+/* =====================================================
+   2. STYLES DE BASE
+   ===================================================== */
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { margin: 0; background: var(--bg); color: var(--ink); font: 400 1.05rem/1.6 "Outfit", system-ui, sans-serif; }
+h1, h2, h3 { margin: 0; line-height: 1.08; }
+a { color: inherit; }
+:focus-visible { outline: 3px solid var(--orange); outline-offset: 3px; }
+.wrap { max-width: 1040px; margin: 0 auto; padding: 0 20px; }
+section { padding: 72px 0; }
+h2 { font-size: clamp(2rem, 5.5vw, 3rem); font-weight: 800; margin-bottom: 10px; }
+.sub { color: var(--muted); margin: 0 0 32px; max-width: 52ch; }
+section.soft { background: var(--tint); }
+.dark { background: var(--deep); color: #e4e9ff; }
+.dark .sub { color: #aab5ea; }
+
+/* =====================================================
+   3. EN-TÊTE : fond bleu cobalt
+   ===================================================== */
+.hero { background: var(--blue); color: #fff; padding: 24px 0 80px; }
+nav { display: flex; justify-content: space-between; align-items: center; }
+nav b { font-size: 1.3rem; font-weight: 800; }
+.nav-btn { text-decoration: none; background: var(--orange); color: var(--deep); padding: 9px 20px; border-radius: 999px; font-weight: 700; }
+.hgrid { display: grid; gap: 44px; align-items: center; margin-top: 44px; }
+.tag { color: #ffd29c; font-weight: 600; margin: 0 0 14px; }
+.hero h1 { font-size: clamp(2.5rem, 8.5vw, 4.4rem); font-weight: 800; margin-bottom: 20px; }
+.lead { font-size: 1.15rem; max-width: 42ch; margin: 0 0 28px; color: #dbe3ff; }
+
+/* =====================================================
+   4. BOUTONS
+   ===================================================== */
+.btn { display: inline-block; background: var(--orange); color: var(--deep); padding: 15px 28px; border-radius: 14px; font-weight: 700; text-decoration: none; margin: 0 8px 8px 0; }
+.btn.ghost { background: transparent; color: #fff; border: 2px solid rgba(255, 255, 255, .55); }
+
+/* =====================================================
+   5. VISUEL PRINCIPAL ET AUTOCOLLANT
+   Couches : photo > points > dégradé. Sans photo, on voit les points.
+   ===================================================== */
+.visual {
+  position: relative; width: 100%; aspect-ratio: 5 / 4;
+  border-radius: 140px 28px 28px 28px;               /* un grand coin arrondi */
+  background-image: url(images/entete.jpg), var(--dots), linear-gradient(150deg, #4c6bff, #1a2e9c);
+  background-size: cover, 26px, cover;
+  background-repeat: no-repeat, repeat, no-repeat;
+  background-position: center;
+  box-shadow: 0 0 0 8px rgba(255, 255, 255, .16);   /* liseré clair pour détacher le visuel du fond bleu */
+}
+/* Autocollant orange posé sur le coin du visuel, légèrement incliné */
+.sticker { position: absolute; left: -14px; bottom: 24px; background: var(--orange); color: var(--deep); padding: 14px 20px; border-radius: 16px; transform: rotate(-3deg); box-shadow: 0 10px 24px rgba(0, 0, 0, .25); }
+.sticker small { display: block; font-weight: 600; }
+.sticker b { display: block; font-size: 1.35rem; font-weight: 800; }
+.sticker span { font-weight: 600; }
+
+/* =====================================================
+   6. CHIFFRES CLÉS
+   ===================================================== */
+.stats { padding: 40px 0; background: #fff; border-bottom: 1px solid var(--line); }
+.stats .wrap { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; text-align: center; }
+.stats b { display: block; font-size: clamp(1.7rem, 7vw, 3rem); font-weight: 800; color: var(--blue); }
+.stats span { color: var(--muted); font-size: .95rem; }
+
+/* =====================================================
+   7. CARTES DES FORMATIONS (créées par script.js)
+   Le trait coloré du haut change selon la formation (variable --c).
+   ===================================================== */
+.cards { display: grid; gap: 16px; }
+.card { background: #fff; border: 1px solid var(--line); border-top: 6px solid var(--c, var(--blue)); border-radius: 20px; padding: 24px; display: flex; flex-direction: column; gap: 6px; transition: transform .2s, box-shadow .2s; }
+.card:hover { transform: translateY(-4px); box-shadow: 0 14px 30px rgba(35, 70, 214, .15); }
+.card h3 { font-size: 1.35rem; font-weight: 700; }
+.card small { color: var(--muted); }
+.card .price { font-size: 1.6rem; font-weight: 800; color: var(--blue); margin: 10px 0 14px; }
+.card .price span { font-size: .95rem; font-weight: 500; color: var(--muted); }
+.card button { margin-top: auto; border: 2px solid var(--blue); color: var(--blue); background: transparent; border-radius: 12px; padding: 10px 18px; font: inherit; font-weight: 700; cursor: pointer; }
+.card button:hover { background: var(--blue); color: #fff; }
+
+/* =====================================================
+   8. POURQUOI NOUS CHOISIR + GALERIE
+   ===================================================== */
+.why { display: grid; gap: 22px; margin: 28px 0 36px; }
+.why h3 { font-size: 1.3rem; margin-bottom: 6px; color: var(--blue); }
+.why p { margin: 0; color: var(--muted); }
+.gallery { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+.pic { aspect-ratio: 4 / 5; border-radius: 20px; background-size: cover, 26px, cover; background-repeat: no-repeat, repeat, no-repeat; background-position: center; }
+.p1 { background-image: url(images/vie-1.jpg), var(--dots), linear-gradient(150deg, #4c6bff, #1a2e9c); }
+.p2 { background-image: url(images/vie-2.jpg), var(--dots), linear-gradient(150deg, #ff8a1f, #c4510a); }
+.p3 { background-image: url(images/vie-3.jpg), var(--dots), linear-gradient(150deg, #2346d6, #ff8a1f); }
+
+/* =====================================================
+   9. INSCRIPTION ET INFOS
+   ===================================================== */
+.book { display: grid; gap: 36px; }
+.booking { background: #fff; color: var(--ink); border-radius: 24px; padding: 26px; display: grid; gap: 8px; }
+.booking label { font-weight: 600; margin-top: 8px; }
+.booking select, .booking input { width: 100%; padding: 13px 14px; font: inherit; color: var(--ink); background: #fff; border: 2px solid var(--line); border-radius: 12px; }
+.recap { margin: 12px 0 6px; padding: 14px; background: var(--tint); border-radius: 12px; }
+.booking .btn { text-align: center; margin: 0; }
+.info dt { font-weight: 700; color: var(--orange); margin-top: 14px; }
+.info dd { margin: 0; color: #cdd5f7; }
+footer { background: #0a1440; color: #94a0d6; padding: 26px 0; font-size: .95rem; }
+
+/* =====================================================
+   10. GRANDS ÉCRANS (à partir de 760 px)
+   ===================================================== */
+@media (min-width: 760px) {
+  .hgrid { grid-template-columns: 1.15fr .85fr; }
+  .cards, .why { grid-template-columns: repeat(3, 1fr); }
+  .book { grid-template-columns: 1fr 1fr; align-items: start; }
+}
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } .card { transition: none; } }
